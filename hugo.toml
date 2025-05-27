@@ -1,0 +1,18 @@
+baseURL = 'http://localhost:1313/'
+languageCode = 'ja'
+title = 'My New Hugo Site'
+theme = "PaperMod"
+
+[[menu.main]]
+identifier = "about"
+name       = "About"
+url        = "/about/"
+weight     = 10     # 数値が小さいほど左側に表示
+
+
+[params]
+  math = true
+
+[markup]        # 既に設定済みで問題なし
+  [markup.goldmark.renderer]
+    unsafe = true
