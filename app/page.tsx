@@ -31,7 +31,7 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
-            <span className="text-purple-100 text-xl font-medium tracking-wide">Ameno Narime</span>
+            <span className="text-purple-100 text-xl font-medium tracking-wide">AmenoNarime</span>
           </div>
 
           <div className="hidden md:flex items-center space-x-8">
