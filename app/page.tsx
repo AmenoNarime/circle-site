@@ -1,8 +1,12 @@
-import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import WaveformBackground from "@/components/waveform-background"
+import HeroButtons from "@/components/hero-buttons"
+import { getAllPosts, formatDate } from "@/lib/blog"
 
 export default function HomePage() {
+  const posts = getAllPosts()
+  const recentPosts = posts.slice(0, 3) // 最新の3記事を取得
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -62,29 +66,15 @@ export default function HomePage() {
               Create Sound Space
             </h1>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                size="lg"
-                className="bg-purple-600 text-white hover:bg-purple-700 px-8 py-3 text-lg font-medium shadow-lg"
-              >
-                About us
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-purple-300 text-purple-100 hover:bg-purple-300 hover:text-purple-900 px-8 py-3 text-lg bg-transparent font-medium"
-              >
-                Read the Blog
-              </Button>
-            </div>
+            <HeroButtons />
           </div>
         </div>
       </section>
 
       {/* About Section */}
-      <section className="bg-gray-100 py-16 px-6 lg:px-12">
+      <section id="about" className="bg-gray-100 py-16 px-6 lg:px-12">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl lg:text-3xl font-bold text-gray-700 mb-8 tracking-wide">About us</h2>
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-700 mb-8 tracking-wide">About us</h2>
           <p className="text-lg lg:text-xl text-gray-600 leading-relaxed font-normal">
             
           </p>
@@ -94,40 +84,47 @@ export default function HomePage() {
       {/* News Section */}
       <section className="bg-gray-100 py-16 px-6 lg:px-12">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-2xl lg:text-3xl font-bold text-gray-700 mb-12 tracking-wide">Recent Activities</h2>
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-700 mb-12 tracking-wide">Recent Activities</h2>
 
           <div className="space-y-12">
-            <article>
-              <h3 className="text-xl lg:text-2xl font-semibold text-gray-600 mb-3">
-                Blog1
-              </h3>
-              <p className="text-base text-gray-500 leading-relaxed mb-2 font-normal">
-                Blog1要約
-              </p>
-              <Link href="/blog" className="text-gray-700 hover:underline font-medium text-sm">
-                ブログを読む
-              </Link>
-            </article>
-
-            <article>
-              <h3 className="text-xl lg:text-2xl font-semibold text-gray-600 mb-3">音響空間の可視化技術</h3>
-              <p className="text-base text-gray-500 leading-relaxed mb-2 font-normal">
-                音の響きを3D空間で可視化し、建築音響設計に活用する新しい技術を研究開発しています。
-              </p>
-              <Link href="/research" className="text-gray-700 hover:underline font-medium text-sm">
-                研究詳細を見る
-              </Link>
-            </article>
-
-            <article>
-              <h3 className="text-xl lg:text-2xl font-semibold text-gray-600 mb-3">自然音響ライブラリの構築</h3>
-              <p className="text-base text-gray-500 leading-relaxed mb-2 font-normal">
-                日本各地の自然音を収録・分析し、音響合成に活用できるライブラリを構築しています。
-              </p>
-              <Link href="/blog" className="text-gray-700 hover:underline font-medium text-sm">
-                プロジェクト詳細
-              </Link>
-            </article>
+            {recentPosts.length === 0 ? (
+              <div className="text-center py-8">
+                <p className="text-gray-500 text-lg">まだブログ記事がありません。</p>
+              </div>
+            ) : (
+              recentPosts.map((post) => (
+                <article key={post.slug}>
+                  <div className="mb-2">
+                    <time className="text-sm text-gray-500 font-medium">
+                      {formatDate(post.date)}
+                    </time>
+                  </div>
+                  <h3 className="text-xl lg:text-2xl font-semibold text-gray-600 hover:text-purple-700 transition-colors mb-3">
+                    <Link href={`/blog/${post.slug}`}>
+                      {post.title}
+                    </Link>
+                  </h3>
+                  <p className="text-base text-gray-500 leading-relaxed mb-2 font-normal">
+                    {post.excerpt}
+                  </p>
+                  {post.tags && post.tags.length > 0 && (
+                    <div className="flex flex-wrap gap-2 mb-3">
+                      {post.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                  <Link href={`/blog/${post.slug}`} className="text-gray-700 hover:underline font-medium text-sm">
+                    ブログを読む
+                  </Link>
+                </article>
+              ))
+            )}
           </div>
 
           <div className="mt-12">
