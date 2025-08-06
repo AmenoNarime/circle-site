@@ -83,7 +83,8 @@ export default function WaveformBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 w-full h-full -z-10"
+      className="absolute inset-0 w-full h-full"
+      style={{ background: "linear-gradient(135deg, #4c1d95 0%, #6b21a8 50%, #7c2d12 100%)" }}
     />
   )
 }
