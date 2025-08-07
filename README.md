@@ -225,6 +225,25 @@ test: テスト追加・修正
    - ファイルパスが正しいか確認
    - `public/media/` 以下に配置されているか確認
 
+4. **devcontainer環境でlightningcssエラーが発生する**
+   ```
+   Error: Cannot find module '../lightningcss.linux-x64-gnu.node'
+   ```
+   
+   **原因**: macOS（ローカル）とLinux（devcontainer）で異なるネイティブバイナリがインストールされるため
+   
+   **解決方法**: devcontainer内で依存関係を再インストール
+   ```bash
+   # devcontainer内で実行
+   rm -rf node_modules package-lock.json
+   npm install
+   ```
+   
+   **予防策**: 
+   - ローカルで `node_modules` や `package-lock.json` をコミットしない
+   - `.gitignore` で適切に除外されていることを確認
+   - devcontainer の `postCreateCommand` で自動的に再インストールが実行される設定済み
+
 ## ライセンス
 
 このプロジェクトは MIT ライセンスの下で公開されています。
