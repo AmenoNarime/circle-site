@@ -1,0 +1,263 @@
+---
+title: "メディア埋め込みテスト記事"
+date: "2025-01-07"
+excerpt: "メディア埋め込みガイドに載っている全てのメディアタイプを実際に埋め込んで動作確認を行います。"
+author: "AmenoNarime"
+tags: ["テスト", "メディア", "技術検証"]
+published: true
+---
+
+# メディア埋め込みテスト記事
+
+この記事では、メディア埋め込みガイドに記載されている全てのメディアタイプが正しく表示・動作するかを検証します。
+
+## 1. 画像の埋め込み
+
+### 基本的な画像埋め込み（Markdown記法）
+
+![サンプル画像](/media/posts/media-embedding-test/images/sample-image.svg)
+
+### Next.js Imageコンポーネントの使用
+
+<Image
+  src="/media/posts/media-embedding-test/images/sample-image.svg"
+  alt="サンプル画像（Next.js Image）"
+  width={800}
+  height={600}
+  className="rounded-lg"
+/>
+
+## 2. 動画の埋め込み
+
+### アニメーション付きSVG
+
+<div className="my-6">
+  <img src="/media/posts/media-embedding-test/videos/sample-video.svg" alt="アニメーション波形" className="w-full rounded-lg" />
+</div>
+
+### 生成された波形画像
+
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+  <div>
+    <img src="/media/posts/media-embedding-test/videos/waveform-animation.png" alt="波形アニメーション" className="w-full rounded-lg" />
+    <p className="text-sm text-gray-600 mt-2">440Hz正弦波の静止画</p>
+  </div>
+  <div>
+    <img src="/media/posts/media-embedding-test/videos/frequency-visualization.png" alt="周波数可視化" className="w-full rounded-lg" />
+    <p className="text-sm text-gray-600 mt-2">周波数スペクトラム可視化</p>
+  </div>
+</div>
+
+### YouTube動画の埋め込み
+
+<div className="aspect-video">
+  <iframe
+    width="100%"
+    height="100%"
+    src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+    title="YouTube video player"
+    frameBorder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowFullScreen
+    className="rounded-lg"
+  ></iframe>
+</div>
+
+## 3. 音声ファイルの埋め込み
+
+音響研究所らしく、音声ファイルの埋め込みも重要です：
+
+### 440Hz正弦波サンプル
+
+<audio controls className="w-full my-4">
+  <source src="/media/posts/media-embedding-test/audio/sample-tone-440hz.wav" type="audio/wav" />
+  お使いのブラウザは音声タグをサポートしていません。
+</audio>
+
+### 周波数スイープ（200Hz-800Hz）
+
+<audio controls className="w-full my-4">
+  <source src="/media/posts/media-embedding-test/audio/frequency-sweep.wav" type="audio/wav" />
+  お使いのブラウザは音声タグをサポートしていません。
+</audio>
+
+### 音声波形の視覚化
+
+<div className="my-6">
+  <img src="/media/posts/media-embedding-test/audio/sample-audio.svg" alt="サンプル音声波形" className="w-full max-w-md mx-auto" />
+</div>
+
+## 4. インタラクティブコンテンツ
+
+MDXの利点を活かして、Reactコンポーネントを直接埋め込むことができます：
+
+### 周波数計算機
+
+<FrequencyCalculator />
+
+### Web Audio API音声プレイヤー
+
+<AudioPlayer />
+
+### 波形アニメーション
+
+<WaveformAnimation />
+
+## 5. コードブロック
+
+技術的な内容を説明する際のコードブロック：
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# 正弦波の生成
+t = np.linspace(0, 1, 1000)
+frequency = 440  # A4音
+amplitude = 0.5
+sine_wave = amplitude * np.sin(2 * np.pi * frequency * t)
+
+# プロット
+plt.figure(figsize=(10, 4))
+plt.plot(t[:100], sine_wave[:100])
+plt.title('440Hz正弦波')
+plt.xlabel('時間 (秒)')
+plt.ylabel('振幅')
+plt.grid(True)
+plt.show()
+```
+
+### JavaScript例
+
+```javascript
+// Web Audio APIを使用した音声生成
+const audioContext = new AudioContext();
+
+function playTone(frequency, duration) {
+  const oscillator = audioContext.createOscillator();
+  const gainNode = audioContext.createGain();
+  
+  oscillator.connect(gainNode);
+  gainNode.connect(audioContext.destination);
+  
+  oscillator.frequency.value = frequency;
+  oscillator.type = 'sine';
+  
+  gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+  gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);
+  
+  oscillator.start(audioContext.currentTime);
+  oscillator.stop(audioContext.currentTime + duration);
+}
+
+// A4音（440Hz）を1秒間再生
+playTone(440, 1.0);
+```
+
+### CSS例
+
+```css
+/* 波形アニメーション */
+@keyframes wave {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.waveform-bar {
+  display: inline-block;
+  width: 4px;
+  height: 20px;
+  background: linear-gradient(to top, #7c3aed, #a855f7);
+  margin: 0 1px;
+  animation: wave 1s ease-in-out infinite;
+}
+
+.waveform-bar:nth-child(2) { animation-delay: 0.1s; }
+.waveform-bar:nth-child(3) { animation-delay: 0.2s; }
+.waveform-bar:nth-child(4) { animation-delay: 0.3s; }
+```
+
+## 6. 数式とグラフの組み合わせ
+
+音響学では、数式とその視覚的表現を組み合わせることが重要です：
+
+正弦波の一般形：
+$$y(t) = A \sin(2\pi f t + \phi)$$
+
+この式において：
+- $A$: 振幅
+- $f$: 周波数
+- $\phi$: 位相
+
+### フーリエ変換
+
+連続フーリエ変換：
+$$F(\omega) = \int_{-\infty}^{\infty} f(t) e^{-i\omega t} dt$$
+
+離散フーリエ変換（DFT）：
+$$X[k] = \sum_{n=0}^{N-1} x[n] e^{-i2\pi kn/N}$$
+
+### 音響学の基本公式
+
+音速の計算：
+$$v = f \lambda$$
+
+ここで：
+- $v$: 音速（m/s）
+- $f$: 周波数（Hz）
+- $\lambda$: 波長（m）
+
+デシベル計算：
+$$L = 20 \log_{10}(P/P_0)$$
+
+## 7. 表組み
+
+| 音名 | 周波数 (Hz) | 波長 (cm) | 用途 |
+|------|-------------|-----------|------|
+| C4   | 261.63      | 131.1     | ド   |
+| D4   | 293.66      | 116.8     | レ   |
+| E4   | 329.63      | 104.1     | ミ   |
+| F4   | 349.23      | 98.2      | ファ |
+| G4   | 392.00      | 87.5      | ソ   |
+| A4   | 440.00      | 77.9      | ラ   |
+| B4   | 493.88      | 69.4      | シ   |
+
+## 8. 引用とリスト
+
+> 「音は時を超え、心を結ぶ」- AmenoNarimeの理念
+
+### 研究分野リスト
+
+1. **伝統音楽のデジタル化**
+   - 雅楽の音響解析
+   - 能楽の空間音響研究
+   - 民謡の音韻分析
+
+2. **空間音響技術**
+   - 3Dオーディオシステム
+   - バイノーラル録音技術
+   - 仮想音響空間の構築
+
+3. **AI音楽生成**
+   - 機械学習による作曲支援
+   - 伝統音楽パターンの学習
+   - リアルタイム音楽生成
+
+## まとめ
+
+この記事では、メディア埋め込みガイドに記載された全てのメディアタイプを実際に埋め込んで検証しました：
+
+- ✅ 画像の埋め込み（Markdown記法・Next.js Image）
+- ✅ 動画の埋め込み（HTML5 video・YouTube）
+- ✅ 音声ファイルの埋め込み
+- ✅ インタラクティブコンテンツ（Reactコンポーネント）
+- ✅ コードブロック（複数言語対応）
+- ✅ 数式表示（KaTeX）
+- ✅ 表組み
+- ✅ 引用とリスト
+
+MDXを使用することで、従来のMarkdownでは難しかった豊富なメディアコンテンツとインタラクティブな要素を記事に組み込むことができることが確認できました。
+
+---
+
+*この記事はメディア埋め込み機能のテストとして作成されました。*

@@ -12,6 +12,7 @@ export interface BlogPost {
   content: string
   author?: string
   tags?: string[]
+  published?: boolean
 }
 
 export interface BlogPostMetadata {
@@ -21,6 +22,7 @@ export interface BlogPostMetadata {
   excerpt: string
   author?: string
   tags?: string[]
+  published?: boolean
 }
 
 export function getAllPosts(): BlogPostMetadata[] {
@@ -45,8 +47,10 @@ export function getAllPosts(): BlogPostMetadata[] {
         excerpt: data.excerpt || '',
         author: data.author,
         tags: data.tags || [],
+        published: data.published !== undefined ? data.published : true, // デフォルトは公開
       }
     })
+    .filter((post) => post.published) // 公開記事のみをフィルタリング
 
   // 日付順でソート（新しい順）
   return allPostsData.sort((a, b) => {
@@ -69,6 +73,13 @@ export function getPostBySlug(slug: string): BlogPost | null {
     const fileContents = fs.readFileSync(fullPath, 'utf8')
     const { data, content } = matter(fileContents)
 
+    const published = data.published !== undefined ? data.published : true // デフォルトは公開
+
+    // 非公開記事の場合はnullを返す
+    if (!published) {
+      return null
+    }
+
     return {
       slug,
       title: data.title || 'Untitled',
@@ -77,6 +88,7 @@ export function getPostBySlug(slug: string): BlogPost | null {
       content,
       author: data.author,
       tags: data.tags || [],
+      published,
     }
   } catch (error) {
     console.error(`Error reading post ${slug}:`, error)
@@ -92,7 +104,18 @@ export function getAllPostSlugs(): string[] {
   const fileNames = fs.readdirSync(postsDirectory)
   return fileNames
     .filter((fileName) => fileName.endsWith('.mdx'))
-    .map((fileName) => fileName.replace(/\.mdx$/, ''))
+    .map((fileName) => {
+      const slug = fileName.replace(/\.mdx$/, '')
+      const fullPath = path.join(postsDirectory, fileName)
+      const fileContents = fs.readFileSync(fullPath, 'utf8')
+      const { data } = matter(fileContents)
+      
+      const published = data.published !== undefined ? data.published : true // デフォルトは公開
+      
+      return { slug, published }
+    })
+    .filter((post) => post.published) // 公開記事のみをフィルタリング
+    .map((post) => post.slug)
 }
 
 export function formatDate(dateString: string): string {

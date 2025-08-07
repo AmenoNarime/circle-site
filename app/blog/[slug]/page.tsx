@@ -5,8 +5,12 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 import remarkGfm from 'remark-gfm'
+import rehypeHighlight from 'rehype-highlight'
+import rehypeSlug from 'rehype-slug'
 import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
+import { mdxComponents } from '@/components/mdx-components'
+import { TableOfContents } from '@/components/table-of-contents'
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>
@@ -48,7 +52,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       <Header />
       <div className="bg-gradient-to-br from-slate-50 to-purple-50">
       <div className="container mx-auto px-4 py-16">
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-4xl mx-auto lg:mr-80">
           {/* ナビゲーション */}
           <div className="mb-8">
             <Link
@@ -114,9 +118,10 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                 options={{
                   mdxOptions: {
                     remarkPlugins: [remarkMath, remarkGfm],
-                    rehypePlugins: [rehypeKatex],
+                    rehypePlugins: [rehypeKatex, rehypeHighlight, rehypeSlug],
                   },
                 }}
+                components={mdxComponents}
               />
             </div>
           </article>
@@ -147,6 +152,9 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
       </div>
       </div>
       <Footer />
+      
+      {/* 目次 */}
+      <TableOfContents />
     </div>
   )
 }

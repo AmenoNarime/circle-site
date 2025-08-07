@@ -3,6 +3,7 @@ import type { NextConfig } from 'next'
 import remarkMath from 'remark-math'
 import rehypeKatex from 'rehype-katex'
 import remarkGfm from 'remark-gfm'
+import rehypeHighlight from 'rehype-highlight'
  
 const nextConfig: NextConfig = {
   // Configure `pageExtensions` to include MDX files
@@ -13,7 +14,7 @@ const nextConfig: NextConfig = {
 const withMDX = createMDX({
   options: {
     remarkPlugins: [remarkMath, remarkGfm],
-    rehypePlugins: [rehypeKatex],
+    rehypePlugins: [rehypeKatex, rehypeHighlight],
   },
 })
  
