@@ -1,0 +1,113 @@
+{
+  "name": "Next.js Development Environment",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:18",
+
+  // ポート設定
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Next.js Dev Server",
+      "onAutoForward": "notify"
+    }
+  },
+
+  // VSCode設定
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        // 必須拡張機能
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-vscode.vscode-typescript-next",
+        "bradlc.vscode-tailwindcss",
+        "unifiedjs.vscode-mdx",
+        "eamodio.gitlens",
+
+        // 推奨拡張機能
+        "formulahendry.auto-rename-tag",
+        "christian-kohler.path-intellisense",
+        "ms-vscode.vscode-json",
+        "yzhang.markdown-all-in-one",
+        "saoudrizwan.claude-dev"
+      ],
+      "settings": {
+        // エディタ設定
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "explicit"
+        },
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+
+        // TypeScript設定
+        "typescript.preferences.importModuleSpecifier": "relative",
+        "typescript.suggest.autoImports": true,
+
+        // Tailwind CSS設定
+        "tailwindCSS.includeLanguages": {
+          "typescript": "javascript",
+          "typescriptreact": "javascript"
+        },
+        "tailwindCSS.experimental.classRegex": [
+          ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
+          ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+        ],
+
+        // MDX設定
+        "files.associations": {
+          "*.mdx": "mdx"
+        },
+
+        // Git設定
+        "git.autofetch": true,
+        "git.enableSmartCommit": true,
+
+        // ファイル監視設定
+        "files.watcherExclude": {
+          "**/node_modules/**": true,
+          "**/.git/objects/**": true,
+          "**/.git/subtree-cache/**": true,
+          "**/dist/**": true,
+          "**/.next/**": true
+        }
+      }
+    }
+  },
+
+  // コンテナ作成時の自動実行コマンド
+  "postCreateCommand": "sudo chown -R node:node /workspaces/${localWorkspaceFolderBasename} && cp .devcontainer/postcss.config.js postcss.config.js && cp .devcontainer/tailwind.config.ts tailwind.config.ts && npm cache clean --force && rm -rf node_modules package-lock.json && npm install",
+
+  // コンテナアタッチ後のコマンド
+  "postAttachCommand": "npm cache clean --force && rm -rf node_modules package-lock.json && npm install",
+
+  // 開発サーバー起動後のコマンド（オプション）
+  "postStartCommand": "echo '🎵 開発環境が準備完了しました！'",
+
+  // コンテナ設定
+  "remoteUser": "node",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+
+  // 環境変数設定
+  "containerEnv": {
+    "NPM_CONFIG_CACHE": "/tmp/.npm",
+    "NPM_CONFIG_PREFIX": "/home/node/.npm-global"
+  },
+
+  // 機能設定
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {
+      "ppa": true,
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.11"
+    },
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": true,
+      "configureZshAsDefaultShell": true,
+      "installOhMyZsh": true,
+      "upgradePackages": true
+    }
+  }
+}

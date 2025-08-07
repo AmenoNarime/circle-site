@@ -1,10 +1,10 @@
-# AmenoNarime - 音雅研究所
+# AmenoNarime
 
-日本の伝統的な美意識と最新の音響技術を融合させる「音雅研究所」の公式ウェブサイトです。
+Next.jsで構築されたブログサイトです。
 
 ## プロジェクト概要
 
-音雅研究所は、音響技術と日本の美意識を組み合わせた研究・開発を行う組織です。このウェブサイトでは、研究成果、技術記事、プロダクト情報を発信しています。
+このウェブサイトでは、技術記事やプロダクト情報を発信しています。
 
 ### 主な機能
 
@@ -40,12 +40,45 @@
 
 ## 開発環境のセットアップ
 
-### 前提条件
+### 🐳 Dev Container（推奨）
 
+**最も簡単で確実な方法です。環境差異によるトラブルを完全に回避できます。**
+
+#### 前提条件
+- Docker Desktop
+- Visual Studio Code + Dev Containers拡張機能
+
+#### セットアップ手順
+1. リポジトリをクローン
+```bash
+git clone git@github.com:AmenoNarime/circle-site.git
+cd circle-site
+```
+
+2. VSCodeで開く
+```bash
+code .
+```
+
+3. 「Reopen in Container」をクリック
+   - 初回は5-10分程度で自動セットアップ完了
+   - 権限設定、Node.js、依存関係、VSCode拡張機能がすべて自動インストール
+   - 権限エラーは自動的に解決されます
+
+4. 開発開始
+```bash
+npm run dev
+```
+
+詳細な使用方法は [.devcontainer/README.md](./.devcontainer/README.md) を参照してください。
+
+### 🛠 ローカル環境セットアップ
+
+#### 前提条件
 - Node.js 18.0以上
 - npm, yarn, pnpm, または bun
 
-### インストール手順
+#### インストール手順
 
 1. リポジトリのクローン
 ```bash
@@ -203,8 +236,7 @@ test: テスト追加・修正
 ## 連絡先
 
 - GitHub: [AmenoNarime](https://github.com/AmenoNarime)
-- Website: [音雅研究所](https://your-domain.com)
 
 ---
 
-**音雅研究所** - 音響技術と日本の美意識の融合を探求する
+**AmenoNarime** - Next.jsで構築されたブログサイト
