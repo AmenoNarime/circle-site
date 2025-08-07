@@ -76,7 +76,7 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl lg:text-5xl font-bold text-gray-700 mb-8 tracking-wide">About us</h2>
           <p className="text-lg lg:text-xl text-gray-600 leading-relaxed font-normal">
-            
+            An open source research project exploring the role of machine learning as a tool in the creative process.
           </p>
         </div>
       </section>
