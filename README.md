@@ -225,24 +225,29 @@ test: テスト追加・修正
    - ファイルパスが正しいか確認
    - `public/media/` 以下に配置されているか確認
 
-4. **devcontainer環境でlightningcssエラーが発生する**
+4. **lightningcssエラーが発生する（ローカル・devcontainer共通）**
    ```
+   Error: Cannot find module '../lightningcss.darwin-x64.node'
    Error: Cannot find module '../lightningcss.linux-x64-gnu.node'
    ```
    
-   **原因**: macOS（ローカル）とLinux（devcontainer）で異なるネイティブバイナリがインストールされるため
+   **原因**: 
+   - Tailwind CSS v4のlightningcss依存関係でネイティブバイナリが正しくインストールされない
+   - 異なるプラットフォーム間（macOS/Linux）でのバイナリ互換性問題
+   - package-lock.jsonが古いバイナリ情報を保持している場合
    
-   **解決方法**: devcontainer内で依存関係を再インストール
+   **解決方法**: 依存関係を完全に再インストール
    ```bash
-   # devcontainer内で実行
+   # ローカル・devcontainer共通
    rm -rf node_modules package-lock.json
    npm install
    ```
    
    **予防策**: 
-   - ローカルで `node_modules` や `package-lock.json` をコミットしない
+   - `node_modules` や `package-lock.json` をコミットしない
    - `.gitignore` で適切に除外されていることを確認
    - devcontainer の `postCreateCommand` で自動的に再インストールが実行される設定済み
+   - 環境を切り替える際は依存関係の再インストールを実行
 
 ## ライセンス
 
