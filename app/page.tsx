@@ -84,7 +84,7 @@ export default function HomePage() {
             
             <div className="bg-gradient-to-r from-purple-50 to-purple-100 p-8 rounded-2xl border-l-4 border-purple-500">
               <p className="text-lg lg:text-xl text-gray-800 leading-relaxed">
-                「AmenoNarime」とは私たちの組織名であり、神様の名前です。天界において鳴り響く、種々雑多、色取り取りの"音"を司る女神という意味を込めて神生み(造語)しました。
+                「AmenoNarime」とは私たちの組織名であり、神様の名前です。天界において鳴り響く、種々雑多、色取り取りの&quot;音&quot;を司る女神という意味を込めて神生み(造語)しました。
               </p>
             </div>
             
@@ -158,7 +158,7 @@ export default function HomePage() {
                 </div>
               </div>
             ) : (
-              recentPosts.map((post, index) => (
+              recentPosts.map((post) => (
                 <article key={post.slug} className="group">
                   <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-all duration-300 hover:-translate-y-1">
                     <div className="p-6">

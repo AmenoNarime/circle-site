@@ -95,7 +95,8 @@ export function getMimeType(filename: string): string {
  */
 export function generateSrcSet(
   basePath: string,
-  sizes: number[] = [400, 800, 1200]
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  _sizes: number[] = [400, 800, 1200]
 ): string {
   // 現在は基本パスのみ返す（将来的に画像リサイズ機能を追加予定）
   return basePath
