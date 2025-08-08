@@ -1,0 +1,155 @@
+---
+title: "メディア埋め込みガイド"
+date: "2025-01-05"
+excerpt: "ブログ記事での画像、動画、その他のメディアコンテンツの埋め込み方法について説明します。"
+author: "AmenoNarime"
+tags: ["ガイド", "メディア", "技術"]
+published: true
+---
+
+# メディア埋め込みガイド
+
+このガイドでは、ブログ記事にさまざまなメディアコンテンツを埋め込む方法について説明します。
+
+## 画像の埋め込み
+
+### 基本的な画像埋め込み
+
+Markdownの標準的な画像記法を使用できます：
+
+```markdown
+![代替テキスト](画像のURL)
+```
+
+### Next.js Imageコンポーネントの使用
+
+より高度な画像最適化が必要な場合は、Next.jsのImageコンポーネントを使用できます：
+
+```jsx
+import Image from 'next/image'
+
+<Image
+  src="/images/sample.jpg"
+  alt="サンプル画像"
+  width={800}
+  height={600}
+  className="rounded-lg"
+/>
+```
+
+## 動画の埋め込み
+
+### HTML5 video要素
+
+ローカルの動画ファイルを埋め込む場合：
+
+```html
+<video controls width="100%" className="rounded-lg">
+  <source src="/videos/sample.mp4" type="video/mp4" />
+  お使いのブラウザは動画タグをサポートしていません。
+</video>
+```
+
+### YouTube動画の埋め込み
+
+YouTube動画を埋め込む場合：
+
+```html
+<div className="aspect-video">
+  <iframe
+    width="100%"
+    height="100%"
+    src="https://www.youtube.com/embed/VIDEO_ID"
+    title="YouTube video player"
+    frameBorder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowFullScreen
+    className="rounded-lg"
+  ></iframe>
+</div>
+```
+
+## 音声ファイルの埋め込み
+
+音響研究所らしく、音声ファイルの埋め込みも重要です：
+
+```html
+<audio controls className="w-full">
+  <source src="/audio/sample.mp3" type="audio/mpeg" />
+  <source src="/audio/sample.ogg" type="audio/ogg" />
+  お使いのブラウザは音声タグをサポートしていません。
+</audio>
+```
+
+## インタラクティブコンテンツ
+
+MDXの利点を活かして、Reactコンポーネントを直接埋め込むことができます：
+
+```jsx
+import { useState } from 'react'
+
+export function FrequencyCalculator() {
+  const [frequency, setFrequency] = useState(440)
+  const wavelength = 343 / frequency // 音速343m/s
+  
+  return (
+    <div className="p-4 border rounded-lg bg-gray-50">
+      <h4 className="font-semibold mb-2">周波数計算機</h4>
+      <input
+        type="range"
+        min="20"
+        max="20000"
+        value={frequency}
+        onChange={(e) => setFrequency(Number(e.target.value))}
+        className="w-full mb-2"
+      />
+      <p>周波数: {frequency} Hz</p>
+      <p>波長: {wavelength.toFixed(3)} m</p>
+    </div>
+  )
+}
+
+<FrequencyCalculator />
+```
+
+## コードブロック
+
+技術的な内容を説明する際のコードブロック：
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+# 正弦波の生成
+t = np.linspace(0, 1, 1000)
+frequency = 440  # A4音
+amplitude = 0.5
+sine_wave = amplitude * np.sin(2 * np.pi * frequency * t)
+
+# プロット
+plt.figure(figsize=(10, 4))
+plt.plot(t[:100], sine_wave[:100])
+plt.title('440Hz正弦波')
+plt.xlabel('時間 (秒)')
+plt.ylabel('振幅')
+plt.grid(True)
+plt.show()
+```
+
+## 数式とグラフの組み合わせ
+
+音響学では、数式とその視覚的表現を組み合わせることが重要です：
+
+正弦波の一般形：
+$$y(t) = A \sin(2\pi f t + \phi)$$
+
+この式において：
+- $A$: 振幅
+- $f$: 周波数
+- $\phi$: 位相
+
+## まとめ
+
+MDXを使用することで、従来のMarkdownでは難しかった豊富なメディアコンテンツとインタラクティブな要素を記事に組み込むことができます。これにより、読者により深い理解と体験を提供できます。
+
+次回は、実際の音響実験データを可視化する方法について詳しく説明します。

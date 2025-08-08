@@ -1,0 +1,47 @@
+<svg width="640" height="480" viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="videoBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e293b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#475569;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- 背景 -->
+  <rect width="640" height="480" fill="url(#videoBg)"/>
+  
+  <!-- アニメーション波形 -->
+  <g transform="translate(50, 240)">
+    <path d="M0,0 Q50,-30 100,0 T200,0 T300,0 T400,0 T500,0 T540,0" 
+          stroke="#7c3aed" stroke-width="3" fill="none">
+      <animate attributeName="d" 
+               values="M0,0 Q50,-30 100,0 T200,0 T300,0 T400,0 T500,0 T540,0;
+                       M0,0 Q50,30 100,0 T200,0 T300,0 T400,0 T500,0 T540,0;
+                       M0,0 Q50,-30 100,0 T200,0 T300,0 T400,0 T500,0 T540,0"
+               dur="2s" repeatCount="indefinite"/>
+    </path>
+    <path d="M0,20 Q50,50 100,20 T200,20 T300,20 T400,20 T500,20 T540,20" 
+          stroke="#a855f7" stroke-width="2" fill="none" opacity="0.7">
+      <animate attributeName="d" 
+               values="M0,20 Q50,50 100,20 T200,20 T300,20 T400,20 T500,20 T540,20;
+                       M0,20 Q50,-10 100,20 T200,20 T300,20 T400,20 T500,20 T540,20;
+                       M0,20 Q50,50 100,20 T200,20 T300,20 T400,20 T500,20 T540,20"
+               dur="1.5s" repeatCount="indefinite"/>
+    </path>
+  </g>
+  
+  <!-- タイトル -->
+  <text x="320" y="80" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="28" font-weight="bold">
+    サンプル動画
+  </text>
+  
+  <!-- 再生ボタン風の装飾 -->
+  <circle cx="320" cy="240" r="40" fill="rgba(124, 58, 237, 0.3)" stroke="#7c3aed" stroke-width="2">
+    <animate attributeName="r" values="40;45;40" dur="2s" repeatCount="indefinite"/>
+  </circle>
+  <polygon points="310,225 310,255 340,240" fill="#7c3aed"/>
+  
+  <!-- 時間表示 -->
+  <text x="320" y="400" text-anchor="middle" fill="#e9d5ff" font-family="Arial, sans-serif" font-size="16">
+    00:05 / 00:10
+  </text>
+</svg>
