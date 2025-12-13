@@ -60,9 +60,26 @@
   line-height: 1.7;
 }
 
-.prose ul, .prose ol {
+.prose ul,
+.prose ol {
   margin-bottom: 1rem;
   padding-left: 1.5rem;
+}
+
+.prose ul {
+  list-style-type: disc;
+}
+
+.prose ol {
+  list-style-type: decimal;
+}
+
+.prose ul ul {
+  list-style-type: circle;
+}
+
+.prose ul ul ul {
+  list-style-type: square;
 }
 
 .prose li {
@@ -143,8 +160,15 @@
 
 /* Waveform animation */
 @keyframes wave {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .waveform-bar {
@@ -156,13 +180,33 @@
   animation: wave 1s ease-in-out infinite;
 }
 
-.waveform-bar:nth-child(2) { animation-delay: 0.1s; }
-.waveform-bar:nth-child(3) { animation-delay: 0.2s; }
-.waveform-bar:nth-child(4) { animation-delay: 0.3s; }
-.waveform-bar:nth-child(5) { animation-delay: 0.4s; }
-.waveform-bar:nth-child(6) { animation-delay: 0.5s; }
-.waveform-bar:nth-child(7) { animation-delay: 0.6s; }
-.waveform-bar:nth-child(8) { animation-delay: 0.7s; }
+.waveform-bar:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.waveform-bar:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.waveform-bar:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+.waveform-bar:nth-child(5) {
+  animation-delay: 0.4s;
+}
+
+.waveform-bar:nth-child(6) {
+  animation-delay: 0.5s;
+}
+
+.waveform-bar:nth-child(7) {
+  animation-delay: 0.6s;
+}
+
+.waveform-bar:nth-child(8) {
+  animation-delay: 0.7s;
+}
 
 .waveform-container {
   display: flex;
