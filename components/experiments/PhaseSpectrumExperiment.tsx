@@ -338,21 +338,21 @@ export default function PhaseSpectrumExperiment() {
               onClick={() => setSpectrumType('sawtooth')}
               className="text-xs h-9 px-3"
             >
-              ノコギリ波 (1/k)
+              ノコギリ波 (1/k整数倍音)
             </Button>
             <Button
               variant={spectrumType === 'square' ? 'default' : 'outline'}
               onClick={() => setSpectrumType('square')}
               className="text-xs h-9 px-3"
             >
-              矩形波 (奇数倍音)
+              矩形波 (1/k奇数倍音)
             </Button>
             <Button
               variant={spectrumType === 'flat' ? 'default' : 'outline'}
               onClick={() => setSpectrumType('flat')}
               className="text-xs h-9 px-3"
             >
-              フラット (すべて1)
+              フラット (整数倍音)
             </Button>
           </div>
         </div>
