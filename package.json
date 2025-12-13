@@ -19,7 +19,7 @@
     "clsx": "^2.1.1",
     "gray-matter": "^4.0.3",
     "katex": "^0.16.22",
-    "next": "^15.4.5",
+    "next": "15.4.10",
     "next-mdx-remote": "^5.0.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
