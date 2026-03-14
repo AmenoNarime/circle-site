@@ -1,4 +1,5 @@
 import Link from "next/link"
+import I18nText from "@/components/i18n-text"
 
 export default function Footer() {
   return (
@@ -6,7 +7,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
         <div className="flex space-x-8">
           <Link href="https://github.com/AmenoNarime" className="text-gray-600 hover:text-gray-800 transition-colors">
-            GitHub
+            <I18nText i18nKey="footer.github" />
           </Link>
         </div>
       </div>

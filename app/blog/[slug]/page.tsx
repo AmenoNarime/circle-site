@@ -11,6 +11,7 @@ import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
 import { mdxComponents } from '@/components/mdx-components'
 import { TableOfContents } from '@/components/table-of-contents'
+import I18nText from '@/components/i18n-text'
 
 interface BlogPostPageProps {
   params: Promise<{ slug: string }>
@@ -72,7 +73,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   d="M15 19l-7-7 7-7"
                 />
               </svg>
-              ブログ一覧に戻る
+              <I18nText i18nKey="post.backToList" />
             </Link>
           </div>
 
@@ -145,7 +146,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
                   d="M15 19l-7-7 7-7"
                 />
               </svg>
-              他の記事を読む
+              <I18nText i18nKey="post.readOther" />
             </Link>
           </footer>
         </div>

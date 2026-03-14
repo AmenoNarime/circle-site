@@ -1,0 +1,69 @@
+{
+  "nav": {
+    "blog": "ブログ",
+    "demo": "デモ",
+    "product": "プロダクト",
+    "research": "研究",
+    "contact": "お問い合わせ"
+  },
+  "hero": {
+    "titleLine1": "音で遊び、",
+    "titleLine2": "音空間を創る",
+    "ctaAbout": "私たちについて",
+    "ctaBlog": "ブログを読む"
+  },
+  "about": {
+    "title": "私たちについて",
+    "line1": "サウンドに関する調査・探究を行う集団です。",
+    "line2": "サウンドに纏わる様々な遊びを通して、音空間の理解と生成を目指します。",
+    "origin": "「AmenoNarime」とは私たちの組織名であり、神様の名前です。天界において鳴り響く、種々雑多、色取り取りの\"音\"を司る女神という意味を込めて神生み(造語)しました。"
+  },
+  "home": {
+    "newsTitle": "最近の活動",
+    "emptyBlog": "まだブログ記事がありません。",
+    "readBlog": "ブログを読む",
+    "allPosts": "すべての記事を見る"
+  },
+  "blog": {
+    "title": "ブログ",
+    "subtitle": "AmenoNarimeの活動報告や技術知見など自由に発信する場です。",
+    "empty": "まだ記事がありません。",
+    "readMore": "続きを読む",
+    "label": "BLOG"
+  },
+  "post": {
+    "backToList": "ブログ一覧に戻る",
+    "readOther": "他の記事を読む",
+    "toc": {
+      "title": "目次",
+      "expand": "目次を展開",
+      "collapse": "目次を折りたたむ"
+    }
+  },
+  "pages": {
+    "contact": {
+      "title": "お問い合わせ",
+      "comingSoon": "準備中"
+    },
+    "demos": {
+      "title": "デモ",
+      "comingSoon": "準備中"
+    },
+    "product": {
+      "title": "プロダクト",
+      "comingSoon": "準備中"
+    },
+    "research": {
+      "title": "研究",
+      "comingSoon": "準備中"
+    }
+  },
+  "footer": {
+    "github": "GitHub"
+  },
+  "language": {
+    "label": "言語",
+    "ja": "日本語",
+    "en": "English"
+  }
+}

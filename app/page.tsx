@@ -1,6 +1,8 @@
 import Link from "next/link"
 import WaveformBackground from "@/components/waveform-background"
 import HeroButtons from "@/components/hero-buttons"
+import I18nText from "@/components/i18n-text"
+import LanguageSwitch from "@/components/language-switch"
 import { getAllPosts, formatDate } from "@/lib/blog"
 
 export default function HomePage() {
@@ -38,22 +40,25 @@ export default function HomePage() {
             <span className="text-purple-100 text-xl font-medium tracking-wide">AmenoNarime</span>
           </div>
 
-          <div className="hidden md:flex items-center space-x-8">
-            <Link href="/blog" className="text-purple-200 hover:text-purple-100 transition-colors font-medium">
-              Blog
-            </Link>
-            <Link href="/demos" className="text-purple-200 hover:text-purple-100 transition-colors font-medium">
-              Demo
-            </Link>
-            <Link href="/product" className="text-purple-200 hover:text-purple-100 transition-colors font-medium">
-              Product
-            </Link>
-            <Link href="/research" className="text-purple-200 hover:text-purple-100 transition-colors font-medium">
-              Research
-            </Link>
-            <Link href="/contact" className="text-purple-200 hover:text-purple-100 transition-colors font-medium">
-              Contact
-            </Link>
+          <div className="flex items-center gap-4">
+            <div className="hidden md:flex items-center space-x-8">
+              <Link href="/blog" className="text-purple-200 hover:text-purple-100 transition-colors font-medium">
+                <I18nText i18nKey="nav.blog" />
+              </Link>
+              <Link href="/demos" className="text-purple-200 hover:text-purple-100 transition-colors font-medium">
+                <I18nText i18nKey="nav.demo" />
+              </Link>
+              <Link href="/product" className="text-purple-200 hover:text-purple-100 transition-colors font-medium">
+                <I18nText i18nKey="nav.product" />
+              </Link>
+              <Link href="/research" className="text-purple-200 hover:text-purple-100 transition-colors font-medium">
+                <I18nText i18nKey="nav.research" />
+              </Link>
+              <Link href="/contact" className="text-purple-200 hover:text-purple-100 transition-colors font-medium">
+                <I18nText i18nKey="nav.contact" />
+              </Link>
+            </div>
+            <LanguageSwitch />
           </div>
         </nav>
 
@@ -61,9 +66,9 @@ export default function HomePage() {
         <div className="relative z-10 flex-1 flex items-center justify-start px-6 lg:px-12 pb-32">
           <div className="max-w-4xl">
             <h1 className="text-5xl lg:text-7xl font-medium text-purple-50 mb-12 leading-tight tracking-wide">
-              Play with Sound,
+              <I18nText i18nKey="hero.titleLine1" />
               <br />
-              Create Sound Space
+              <I18nText i18nKey="hero.titleLine2" />
             </h1>
 
             <HeroButtons />
@@ -74,17 +79,20 @@ export default function HomePage() {
       {/* About Section */}
       <section id="about" className="bg-gray-100 py-20 px-6 lg:px-12">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-12 tracking-wide">About us</h2>
+          <h2 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-12 tracking-wide">
+            <I18nText i18nKey="about.title" />
+          </h2>
           
           <div className="space-y-8">
             <p className="text-xl lg:text-2xl text-gray-700 leading-relaxed font-medium">
-              サウンドに関する調査・探究を行う集団です。<br></br>
-              サウンドに纏わる様々な遊びを通して、音空間の理解と生成を目指します。
+              <I18nText i18nKey="about.line1" />
+              <br />
+              <I18nText i18nKey="about.line2" />
             </p>
             
             <div className="bg-gradient-to-r from-purple-50 to-purple-100 p-8 rounded-2xl border-l-4 border-purple-500">
               <p className="text-lg lg:text-xl text-gray-800 leading-relaxed">
-                「AmenoNarime」とは私たちの組織名であり、神様の名前です。天界において鳴り響く、種々雑多、色取り取りの&quot;音&quot;を司る女神という意味を込めて神生み(造語)しました。
+                <I18nText i18nKey="about.origin" />
               </p>
             </div>
             
@@ -141,7 +149,9 @@ export default function HomePage() {
       <section className="bg-gradient-to-br from-gray-100 to-gray-200 py-20 px-6 lg:px-12">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6 tracking-wide">Recent Activities</h2>
+            <h2 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-6 tracking-wide">
+              <I18nText i18nKey="home.newsTitle" />
+            </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-purple-700 mx-auto rounded-full"></div>
           </div>
 
@@ -154,7 +164,9 @@ export default function HomePage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                     </svg>
                   </div>
-                  <p className="text-gray-500 text-lg">まだブログ記事がありません。</p>
+                  <p className="text-gray-500 text-lg">
+                    <I18nText i18nKey="home.emptyBlog" />
+                  </p>
                 </div>
               </div>
             ) : (
@@ -200,7 +212,7 @@ export default function HomePage() {
                           href={`/blog/${post.slug}`} 
                           className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-600 to-purple-700 text-white font-medium rounded-md hover:from-purple-700 hover:to-purple-800 transition-all duration-300 shadow-sm hover:shadow-md text-sm"
                         >
-                          ブログを読む
+                          <I18nText i18nKey="home.readBlog" />
                           <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>
@@ -220,7 +232,7 @@ export default function HomePage() {
               href="/blog" 
               className="inline-flex items-center px-8 py-4 bg-white text-purple-700 font-semibold rounded-xl border-2 border-purple-200 hover:bg-purple-50 hover:border-purple-300 transition-all duration-300 shadow-sm hover:shadow-md"
             >
-              すべての記事を見る
+              <I18nText i18nKey="home.allPosts" />
               <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
@@ -234,7 +246,7 @@ export default function HomePage() {
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
           <div className="flex space-x-8">
             <Link href="/github" className="text-gray-600 hover:text-gray-800">
-              GitHub
+              <I18nText i18nKey="footer.github" />
             </Link>
           </div>
         </div>
