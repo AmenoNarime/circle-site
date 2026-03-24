@@ -1,6 +1,6 @@
 {
   "name": "Next.js Development Environment",
-  "image": "mcr.microsoft.com/devcontainers/javascript-node:18",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
 
   // ポート設定
   "forwardPorts": [3000],

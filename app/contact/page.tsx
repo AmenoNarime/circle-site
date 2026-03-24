@@ -1,5 +1,6 @@
 import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
+import I18nText from '@/components/i18n-text'
 
 export default function ContactPage() {
   return (
@@ -10,10 +11,10 @@ export default function ContactPage() {
           <div className="max-w-4xl mx-auto">
             <div className="text-center">
               <h1 className="text-5xl font-bold text-slate-800 mb-8">
-                Contact
+                <I18nText i18nKey="pages.contact.title" />
               </h1>
               <p className="text-2xl text-gray-600">
-                Coming Soon
+                <I18nText i18nKey="pages.contact.comingSoon" />
               </p>
             </div>
           </div>

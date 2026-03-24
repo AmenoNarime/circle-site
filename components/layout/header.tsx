@@ -1,4 +1,6 @@
 import Link from "next/link"
+import I18nText from "@/components/i18n-text"
+import LanguageSwitch from "@/components/language-switch"
 
 export default function Header() {
   return (
@@ -31,22 +33,25 @@ export default function Header() {
         </Link>
       </div>
 
-      <div className="hidden md:flex items-center space-x-8">
-        <Link href="/blog" className="text-purple-200 hover:text-purple-100 transition-colors font-medium">
-          Blog
-        </Link>
-        <Link href="/demos" className="text-purple-200 hover:text-purple-100 transition-colors font-medium">
-          Demo
-        </Link>
-        <Link href="/product" className="text-purple-200 hover:text-purple-100 transition-colors font-medium">
-          Product
-        </Link>
-        <Link href="/research" className="text-purple-200 hover:text-purple-100 transition-colors font-medium">
-          Research
-        </Link>
-        <Link href="/contact" className="text-purple-200 hover:text-purple-100 transition-colors font-medium">
-          Contact
-        </Link>
+      <div className="flex items-center gap-4">
+        <div className="hidden md:flex items-center space-x-8">
+          <Link href="/blog" className="text-purple-200 hover:text-purple-100 transition-colors font-medium">
+            <I18nText i18nKey="nav.blog" />
+          </Link>
+          <Link href="/demos" className="text-purple-200 hover:text-purple-100 transition-colors font-medium">
+            <I18nText i18nKey="nav.demo" />
+          </Link>
+          <Link href="/product" className="text-purple-200 hover:text-purple-100 transition-colors font-medium">
+            <I18nText i18nKey="nav.product" />
+          </Link>
+          <Link href="/research" className="text-purple-200 hover:text-purple-100 transition-colors font-medium">
+            <I18nText i18nKey="nav.research" />
+          </Link>
+          <Link href="/contact" className="text-purple-200 hover:text-purple-100 transition-colors font-medium">
+            <I18nText i18nKey="nav.contact" />
+          </Link>
+        </div>
+        <LanguageSwitch />
       </div>
     </nav>
   )

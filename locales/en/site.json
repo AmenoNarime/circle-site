@@ -1,0 +1,69 @@
+{
+  "nav": {
+    "blog": "Blog",
+    "demo": "Demo",
+    "product": "Product",
+    "research": "Research",
+    "contact": "Contact"
+  },
+  "hero": {
+    "titleLine1": "Play with Sound,",
+    "titleLine2": "Create Sound Space",
+    "ctaAbout": "About us",
+    "ctaBlog": "Read the Blog"
+  },
+  "about": {
+    "title": "About us",
+    "line1": "We are a group exploring and researching sound.",
+    "line2": "Through diverse play around sound, we aim to understand and generate sound spaces.",
+    "origin": "\u201cAmenoNarime\u201d is both the name of our organization and the name of a deity. We coined it to mean a goddess who governs the diverse, colorful \"sounds\" that resonate in the heavens."
+  },
+  "home": {
+    "newsTitle": "Recent Activities",
+    "emptyBlog": "No blog posts yet.",
+    "readBlog": "Read the Blog",
+    "allPosts": "View all posts"
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "A place to share updates and technical insights from AmenoNarime.",
+    "empty": "No posts yet.",
+    "readMore": "Read more",
+    "label": "BLOG"
+  },
+  "post": {
+    "backToList": "Back to the blog list",
+    "readOther": "Read other posts",
+    "toc": {
+      "title": "Table of contents",
+      "expand": "Expand table of contents",
+      "collapse": "Collapse table of contents"
+    }
+  },
+  "pages": {
+    "contact": {
+      "title": "Contact",
+      "comingSoon": "Coming Soon"
+    },
+    "demos": {
+      "title": "Demo",
+      "comingSoon": "Coming Soon"
+    },
+    "product": {
+      "title": "Product",
+      "comingSoon": "Coming Soon"
+    },
+    "research": {
+      "title": "Research",
+      "comingSoon": "Coming Soon"
+    }
+  },
+  "footer": {
+    "github": "GitHub"
+  },
+  "language": {
+    "label": "Language",
+    "ja": "Japanese",
+    "en": "English"
+  }
+}

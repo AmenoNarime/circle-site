@@ -1,5 +1,6 @@
 import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
+import I18nText from '@/components/i18n-text'
 
 export default function DemosPage() {
   return (
@@ -10,10 +11,10 @@ export default function DemosPage() {
           <div className="max-w-4xl mx-auto">
             <div className="text-center">
               <h1 className="text-5xl font-bold text-slate-800 mb-8">
-                Demo
+                <I18nText i18nKey="pages.demos.title" />
               </h1>
               <p className="text-2xl text-gray-600">
-                Coming Soon
+                <I18nText i18nKey="pages.demos.comingSoon" />
               </p>
             </div>
           </div>
