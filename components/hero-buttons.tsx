@@ -2,8 +2,11 @@
 
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { useTranslation } from "react-i18next"
 
 export default function HeroButtons() {
+  const { t } = useTranslation()
+
   return (
     <div className="flex flex-col sm:flex-row gap-4">
       <Button
@@ -15,7 +18,7 @@ export default function HeroButtons() {
           })
         }}
       >
-        About us
+        {t("hero.ctaAbout")}
       </Button>
       <Link href="/blog">
         <Button
@@ -23,7 +26,7 @@ export default function HeroButtons() {
           size="lg"
           className="border-purple-300 text-purple-100 hover:bg-purple-300 hover:text-purple-900 px-8 py-3 text-lg bg-transparent font-medium w-full"
         >
-          Read the Blog
+          {t("hero.ctaBlog")}
         </Button>
       </Link>
     </div>

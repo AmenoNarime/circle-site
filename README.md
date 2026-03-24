@@ -32,7 +32,7 @@ Next.jsで構築されたブログサイトです。
   "react": "19.0.0",
   "typescript": "^5",
   "tailwindcss": "^3.4.1",
-  "next-mdx-remote": "^5.0.0",
+  "next-mdx-remote": "^6.0.0",
   "katex": "^0.16.11",
   "gray-matter": "^4.0.3"
 }
@@ -45,17 +45,21 @@ Next.jsで構築されたブログサイトです。
 **最も簡単で確実な方法です。環境差異によるトラブルを完全に回避できます。**
 
 #### 前提条件
+
 - Docker Desktop
 - Visual Studio Code + Dev Containers拡張機能
 
 #### セットアップ手順
+
 1. リポジトリをクローン
+
 ```bash
 git clone git@github.com:AmenoNarime/circle-site.git
 cd circle-site
 ```
 
 2. VSCodeで開く
+
 ```bash
 code .
 ```
@@ -66,6 +70,7 @@ code .
    - 権限エラーは自動的に解決されます
 
 4. 開発開始
+
 ```bash
 npm run dev
 ```
@@ -75,18 +80,21 @@ npm run dev
 ### 🛠 ローカル環境セットアップ
 
 #### 前提条件
+
 - Node.js 18.0以上
 - npm, yarn, pnpm, または bun
 
 #### インストール手順
 
 1. リポジトリのクローン
+
 ```bash
 git clone git@github.com:AmenoNarime/circle-site.git
 cd circle-site
 ```
 
 2. 依存関係のインストール
+
 ```bash
 npm install
 # または
@@ -96,6 +104,7 @@ pnpm install
 ```
 
 3. 開発サーバーの起動
+
 ```bash
 npm run dev
 # または
@@ -105,7 +114,7 @@ pnpm dev
 ```
 
 4. ブラウザで確認
-[http://localhost:3000](http://localhost:3000) にアクセス
+   [http://localhost:3000](http://localhost:3000) にアクセス
 
 ## プロジェクト構造
 
@@ -226,24 +235,26 @@ test: テスト追加・修正
    - `public/media/` 以下に配置されているか確認
 
 4. **lightningcssエラーが発生する（ローカル・devcontainer共通）**
+
    ```
    Error: Cannot find module '../lightningcss.darwin-x64.node'
    Error: Cannot find module '../lightningcss.linux-x64-gnu.node'
    ```
-   
-   **原因**: 
+
+   **原因**:
    - Tailwind CSS v4のlightningcss依存関係でネイティブバイナリが正しくインストールされない
    - 異なるプラットフォーム間（macOS/Linux）でのバイナリ互換性問題
    - package-lock.jsonが古いバイナリ情報を保持している場合
-   
+
    **解決方法**: 依存関係を完全に再インストール
+
    ```bash
    # ローカル・devcontainer共通
    rm -rf node_modules package-lock.json
    npm install
    ```
-   
-   **予防策**: 
+
+   **予防策**:
    - `node_modules` や `package-lock.json` をコミットしない
    - `.gitignore` で適切に除外されていることを確認
    - devcontainer の `postCreateCommand` で自動的に再インストールが実行される設定済み

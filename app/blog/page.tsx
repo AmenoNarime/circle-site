@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { getAllPosts, formatDate } from '@/lib/blog'
 import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
+import I18nText from '@/components/i18n-text'
 
 export default function BlogPage() {
   const posts = getAllPosts()
@@ -15,10 +16,10 @@ export default function BlogPage() {
           {/* ヘッダー */}
           <div className="text-center mb-16">
             <h1 className="text-5xl font-bold text-slate-800 mb-4">
-              Blog
+              <I18nText i18nKey="blog.title" />
             </h1>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              AmenoNarimeの活動報告や技術知見など自由に発信する場です。
+              <I18nText i18nKey="blog.subtitle" />
             </p>
           </div>
 
@@ -31,7 +32,9 @@ export default function BlogPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
                   </svg>
                 </div>
-                <p className="text-gray-500 text-lg">まだ記事がありません。</p>
+                <p className="text-gray-500 text-lg">
+                  <I18nText i18nKey="blog.empty" />
+                </p>
               </div>
             </div>
           ) : (
@@ -46,7 +49,9 @@ export default function BlogPage() {
                         </time>
                         <div className="flex items-center space-x-1">
                           <div className="w-1.5 h-1.5 bg-purple-500 rounded-full"></div>
-                          <span className="text-xs text-gray-500 font-medium">BLOG</span>
+                          <span className="text-xs text-gray-500 font-medium">
+                            <I18nText i18nKey="blog.label" />
+                          </span>
                         </div>
                       </div>
                       
@@ -78,7 +83,7 @@ export default function BlogPage() {
                           href={`/blog/${post.slug}`} 
                           className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-600 to-purple-700 text-white font-medium rounded-md hover:from-purple-700 hover:to-purple-800 transition-all duration-300 shadow-sm hover:shadow-md text-sm"
                         >
-                          続きを読む
+                          <I18nText i18nKey="blog.readMore" />
                           <svg className="w-3 h-3 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                           </svg>

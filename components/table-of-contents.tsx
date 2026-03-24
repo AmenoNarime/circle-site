@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 interface TocItem {
   id: string
@@ -13,6 +14,7 @@ interface TableOfContentsProps {
 }
 
 export function TableOfContents({ className = '' }: TableOfContentsProps) {
+  const { t } = useTranslation()
   const [tocItems, setTocItems] = useState<TocItem[]>([])
   const [activeId, setActiveId] = useState<string>('')
   const [isCollapsed, setIsCollapsed] = useState<boolean>(false)
@@ -89,12 +91,12 @@ export function TableOfContents({ className = '' }: TableOfContentsProps) {
         {/* ヘッダー */}
         <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-purple-50/50">
           <h3 className="text-sm font-semibold text-gray-900">
-            目次
+            {t('post.toc.title')}
           </h3>
           <button
             onClick={toggleCollapse}
             className="p-1 rounded-md hover:bg-purple-100 transition-colors"
-            aria-label={isCollapsed ? '目次を展開' : '目次を折りたたむ'}
+            aria-label={isCollapsed ? t('post.toc.expand') : t('post.toc.collapse')}
           >
             {isCollapsed ? (
               <svg className="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
